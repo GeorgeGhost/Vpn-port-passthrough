@@ -10,6 +10,7 @@ For example you can have VPS server acting as vpn server, and access ssh of the 
 You must set net.ipv4.ip_forward=1 to make both scripts work
 
 ## Variables:
+* Mode - choose which script to use (iptables or ufw). (Only available in vpncombined.sh)
 * Input Port - port you want to access from outside world.
 * Port - port which you want to access on VPN client (eg ssh server port)
 * WAN - WAN of your VPS (VPN Server)

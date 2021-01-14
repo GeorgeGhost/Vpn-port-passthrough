@@ -7,7 +7,7 @@ read -p 'TCP or UDP(tcp/udp): ' TCPORUDP
 read -p 'Input Port: ' INPUTPORT
 read -p 'Port: ' PORT
 
-echo "Remove line last line of file"
+echo "Remove last line"
 sed -i '$ d' $FILE
 echo "# Add port forwarding from $SERVER($WAN):$INPUTPORT to $CLIENT:$PORT type $TCPORUDP and back" >> $FILE
 echo " " >> $FILE

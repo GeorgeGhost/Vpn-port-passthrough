@@ -20,6 +20,9 @@ echo "-A POSTROUTING -d $CLIENT -p $TCPORUDP --dport $PORT -j SNAT --to-source $
 echo "Append line containing COMMIT"
 echo " " >> $FILE
 echo "COMMIT" >> $FILE
+echo "Restart UFW to enable rules"
+ufw enable
+ufw disable
 elif [["$MODE" == "iptables"]]
 then
 echo "iptables -t nat -A PREROUTING -d $WAN -p $TCPORUDP --dport $INPUTPORT -j DNAT --to-dest $CLIENT:$PORT"

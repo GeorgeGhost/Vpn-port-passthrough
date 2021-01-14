@@ -35,6 +35,8 @@ This script:
 :PREROUTING ACCEPT [0:0]
 :POSTROUTING ACCEPT [0:0]
 
+-F
+
 COMMIT
 ```
 * COMMIT must be the last line of the file in order for script to work correctly

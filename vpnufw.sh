@@ -7,8 +7,8 @@ read -p 'TCP or UDP(tcp/udp): ' TCPORUDP
 read -p 'Input Port: ' INPUTPORT
 read -p 'Port: ' PORT
 
-echo "Remove line containing COMMIT"
-sed -i '/COMMIT/d' $FILE
+echo "Remove line last line of file"
+sed -i '$ d' $FILE
 echo "# Add port forwarding from $SERVER($WAN):$INPUTPORT to $CLIENT:$PORT type $TCPORUDP and back" >> $FILE
 echo " " >> $FILE
 echo "Add to UFW: -A PREROUTING -d $WAN -p $TCPORUDP --dport $INPUTPORT -j DNAT --to-dest $CLIENT:$PORT"
@@ -18,3 +18,6 @@ echo "-A POSTROUTING -d $CLIENT -p $TCPORUDP --dport $PORT -j SNAT --to-source $
 echo "Append line containing COMMIT"
 echo " " >> $FILE
 echo "COMMIT" >> $FILE
+echo "Restart UFW to enable rules"
+ufw enable
+ufw disable

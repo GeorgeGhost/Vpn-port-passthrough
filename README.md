@@ -29,12 +29,15 @@ This script:
 ## UFW:
 ### To make this script work:
 * You must have 'DEFAULT_FORWARD_POLICY="ACCEPT"' in /etc/default/ufw
-* This must be set this manually in /etc/ufw/before.rules
+* This must be set this manually at the end of /etc/ufw/before.rules
 ```
 *nat
 :PREROUTING ACCEPT [0:0]
 :POSTROUTING ACCEPT [0:0]
+
+COMMIT
 ```
+* COMMIT must be the last line of the file in order for script to work correctly
 ### This script:
 * Removes COMMIT at the end of /etc/ufw/before.rules
 * Adds rules for port passthrough at the end of the file

@@ -9,8 +9,8 @@ read -p 'Input Port: ' INPUTPORT
 read -p 'Port: ' PORT
 if [["$MODE" == "ufw"]]
 then
-echo "Remove line containing COMMIT"
-sed -i '/COMMIT/d' $FILE
+echo "Remove last line"
+sed -i '$ d' $FILE
 echo "# Add port forwarding from $SERVER($WAN):$INPUTPORT to $CLIENT:$PORT type $TCPORUDP and back" >> $FILE
 echo " " >> $FILE
 echo "Add to UFW: -A PREROUTING -d $WAN -p $TCPORUDP --dport $INPUTPORT -j DNAT --to-dest $CLIENT:$PORT"
